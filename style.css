@@ -1,0 +1,224 @@
+/* Basic Reset */
+* { margin:0; padding:0; box-sizing:border-box; text-decoration: none;}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height:1.6;
+  
+}
+
+/* Navigation Bar */
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 1rem 3rem;
+  background:#0c1a2b;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo img {
+  height:50px;
+  transition: transform 0.3s ease;
+  border-radius:50% ;
+}
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  list-style:none;
+  display:flex;
+  gap:2rem;
+}
+
+.nav-links a {
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  position:relative;
+  transition:color 0.3s ease;
+}
+.nav-links a::after {
+  content:'';
+  position:absolute;
+  width:0;
+  height:2px;
+  left:0;
+  bottom:-5px;
+  background:#00c9a7;
+  transition:width 0.3s ease;
+}
+.nav-links a:hover {
+  color:#00c9a7;
+}
+.nav-links a:hover::after {
+  width:100%;
+}
+
+/* Sections */
+.section {
+  padding:5rem 3rem ;
+  text-align:center;
+  min-height:0vh;
+  bottom: 0;
+}
+
+/*rainbow button*/
+.rainbow-btn {
+  margin-left: 44vw;
+  margin-bottom: 28.3vh;
+  top:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    position: relative;
+    padding: 15px 40px;
+    font-size: 18px;
+    color: #fff;
+    background: #111;        /* Button background */
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* The moving rainbow border */
+.rainbow-btn::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(
+        270deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+    );
+    background-size: 400% 400%;
+    border-radius: 15px;
+    z-index: -1;
+    animation: moveRainbow 5s linear infinite;
+}
+
+/* Dark inner background so text stays readable */
+.rainbow-btn::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #111;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+@keyframes moveRainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+
+/* Optional hover effect */
+.rainbow-btn:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+
+/* Fade-in animation */
+.fade-in {
+  opacity:0;
+  transform:translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity:1; transform:translateY(0);}
+}
+.center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;      /* Full viewport height */
+    background: none;   /* Page background */
+} 
+
+
+/* Footer */
+footer {
+  text-align:center;
+  padding:1rem;
+  background:#0c1a2b;
+  color:#fff;
+}
+
+
+
+
+/* ============================= */
+/* RESPONSIVE DESIGN             */
+/* ============================= */
+
+/* Tablets (≤ 992px) */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  .nav-links {
+    gap: 1.2rem;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .logo {
+    margin-bottom: 1rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  .nav-links a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+  .section {
+    padding: 3rem 1.5rem;
+  }
+  .rainbow-btn {
+    width: 80%;
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+}
+
+/* Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .rainbow-btn {
+    width: 90%;
+    font-size: 15px;
+    padding: 10px 15px;
+  }
+  .section h1 {
+    font-size: 1.8rem;
+  }
+  .section p {
+    font-size: 1rem;
+  }
+}
